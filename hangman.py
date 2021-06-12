@@ -121,7 +121,7 @@ def selection():
     while i != 1 and i != 2:
         print("How many players? (1-2):")
         try: i = int(input())
-        except: return
+        except: continue
     return i
 
 def names():
