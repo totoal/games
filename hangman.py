@@ -140,8 +140,6 @@ def names():
             continue
         if player2name.isalpha():
                 valid_word = True
-        player1name = Fore.YELLOW + player1name + Style.RESET_ALL
-        player2name = Fore.CYAN + player2name + Style.RESET_ALL
 
     if player1name.upper() == 'PLAYER' or player2name.upper() == 'PLAYER':
         print("Very unoriginal names...")
@@ -153,11 +151,15 @@ def names():
         print(uengess)
         input()
         if player1name.upper() == 'JORGE':
-            player1name = Fore.YELLOW + 'Gorgues'+ Style.RESET_ALL
-            player2name = Fore.GREEN + 'A el Berto'+ Style.RESET_ALL
+            player1name = 'Gorgues'
+            player2name = 'A el Berto'
         else:
-            player2name = Fore.YELLOW + 'Gorgues'+ Style.RESET_ALL
-            player1name = Fore.GREEN + 'A el Berto'+ Style.RESET_ALL
+            player2name = 'Gorgues'
+            player1name = 'A el Berto'
+
+    
+    player1name = Fore.YELLOW + player1name + Style.RESET_ALL
+    player2name = Fore.CYAN + player2name + Style.RESET_ALL
     
     return player1name, player2name
 
