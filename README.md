@@ -2,7 +2,7 @@
 <pre>
  |-------
  |      |
- |      O        <== Kappaco de mierda
+ |      O
  |     /|\
  |      |
  |     / \
