@@ -119,12 +119,14 @@ def names():
         player1name = input()
         if player1name.isalpha():
                 valid_word = True
+        player1name = Fore.YELLOW + player1name + Style.RESET_ALL
     valid_word = False
     while valid_word == False:
         print("Player 2 name:")
         player2name = input()
         if player2name.isalpha():
                 valid_word = True
+        player2name = Fore.CYAN + player2name + Style.RESET_ALL
     
     return player1name, player2name
 
@@ -206,13 +208,13 @@ def game(playername):
         print( ' '.join(list(word)))
         print(Fore.RED+':-( You lost.')
         print(Style.RESET_ALL)
-        input("Press return when ready")
+        input()
         return False
     elif stage >= 0 and stage < 7:
         update_stage(stage, wordlen, letters, positions, missed, playername)
         print(Fore.GREEN+':-D You win.')
         print(Style.RESET_ALL)   
-        input("Press return when ready")
+        input()
         return True
 
 if __name__ == '__main__':
@@ -234,30 +236,33 @@ if __name__ == '__main__':
         name1, name2 = names()
         rounds = 0
         while rounds < 1 or rounds % 1 != 0:
-            rounds = int(input("Number of rounds to play: "))
+            rounds = int(input("Number of rounds: "))
         current = 1
         score1  = 0
         score2  = 0
         while current <= rounds:
             cls()
-            print("SCORE:")
-            print(name1+" "+str(score1)+"-"+str(score2)+" "+name2)
-            print("Round "+str(current)+" - "+name1+"'s turn:")
-            input("Press return when ready, "+name1)
+            print("========== SCORE ==========")
+            print(name1 + " " + str(score1)
+                 + "-" + str(score2) + " " + name2)
+            print('===========================')
+            print("\n\nRound "+str(current)+" - "+name1+"'s turn.")
+            input('\n(Press return)')
             if game(name1):
                 score1 +=1
-                
+         
             cls()
-            print("SCORE:")
+            print("========== SCORE ==========")
             print(name1+" "+str(score1)+"-"+str(score2)+" "+name2)
-            print("Round "+str(current)+" - "+name2+"'s turn:")
-            input("Press return key when ready, "+name2)
+            print('===========================')
+            print("\n\nRound "+str(current)+" - "+name2+"'s turn")
+            input('\n(Press return)')
             if game(name2):
                 score2 +=1
 
             current+=1
         
-        print(name1+" "+str(score1)+"-"+str(score2)+" "+name2)
+        print(name1 + " "+str(score1)+"-"+str(score2)+" "+name2)
         if score1 > score2:
             print("\nThe winner is "+str(name1)+"!")
         elif score1 < score2:
