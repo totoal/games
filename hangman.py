@@ -139,12 +139,21 @@ def names():
         if player2name.isalpha():
                 valid_word = True
 
+    if player1name.upper() == 'PLAYER' or player2name.upper() == 'PLAYER':
+        print("Very unoriginal names...")
+
     players=[player1name.upper(),player2name.upper()]
     if "JORGE" in players and "ALBERTO" in players:
         print("FANE OHTANIA MANQUE PIERDA")
         print("")
         print(uengess)
         input()
+        if player1name.upper() == 'JORGE':
+            player1name = 'Gorgues'
+            player2name = 'A el Berto'
+        else:
+            player2name = 'Gorgues'
+            player1name = 'A el Berto'
     
     return player1name, player2name
 
