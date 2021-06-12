@@ -1,7 +1,3 @@
-ATM
-CD
-SUV
-TV
 aardvark
 abacus
 abbey

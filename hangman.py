@@ -10,6 +10,8 @@ if sys.platform == 'win32':
     def cls(): os.system('cls')
 elif sys.platform == 'linux':
     def cls(): os.system('clear')
+else:
+    def cls(): os.system('clear')
 
 # 0 is the pole and 1-7 stages
 hm_stages = [
@@ -100,18 +102,6 @@ hm_stages = [
 |
 |
 ===========
-''',
-
-'''
-|-------
-|      |
-|      O
-|     /|\\
-|      |
-|     / \\
-|
-|
-===========
 '''
 ]
 def selection():
@@ -187,7 +177,7 @@ def game(playername):
             print('NOT VALID')
             time.sleep(1)
             continue
-
+        
         if guess in letters or guess in missed:
             print('REPEATED LETTER')
             time.sleep(1)

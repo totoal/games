@@ -1,1 +1,12 @@
-FANE QEFLEMPAS
+## FANE QEFLEMPAS
+<pre>
+ |-------
+ |      |
+ |      O
+ |     /|\
+ |      |
+ |     / \
+ |
+ |
+ ============
+ </pre>
