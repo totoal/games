@@ -13,6 +13,17 @@ elif sys.platform == 'linux':
 else:
     def cls(): os.system('clear')
 
+uengess = '''
+                 |
+                 |
+    --------------------------
+    /           /          /
+   /       ---------      /
+  /           /          /
+ /         -----        /
+/           /          /
+'''
+
 # 0 is the pole and 1-7 stages
 hm_stages = [
 '''
@@ -124,9 +135,27 @@ def names():
     while valid_word == False:
         print("Player 2 name:")
         player2name = input()
+        if player2name == player1name:
+            print("Both players cannot have the same name")
         if player2name.isalpha():
                 valid_word = True
         player2name = Fore.CYAN + player2name + Style.RESET_ALL
+
+    if player1name.upper() == 'PLAYER' or player2name.upper() == 'PLAYER':
+        print("Very unoriginal names...")
+
+    players=[player1name.upper(),player2name.upper()]
+    if "JORGE" in players and "ALBERTO" in players:
+        print("FANE OHTANIA MANQUE PIERDA")
+        print("")
+        print(uengess)
+        input()
+        if player1name.upper() == 'JORGE':
+            player1name = 'Gorgues'
+            player2name = 'A el Berto'
+        else:
+            player2name = 'Gorgues'
+            player1name = 'A el Berto'
     
     return player1name, player2name
 
