@@ -137,6 +137,7 @@ def names():
         player2name = input()
         if player2name == player1name:
             print("Both players cannot have the same name")
+            continue
         if player2name.isalpha():
                 valid_word = True
         player2name = Fore.CYAN + player2name + Style.RESET_ALL
