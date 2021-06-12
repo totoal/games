@@ -1,8 +1,10 @@
 import sys
 import os
-import unidecode
 from colorama import Fore, Style
 import time
+import numpy as np
+
+words = open("listofwords.txt", "r").read().split("\n")
 
 if sys.platform == 'win32':
     def cls(): os.system('cls')
@@ -98,6 +100,18 @@ hm_stages = [
 |
 |
 ===========
+''',
+
+'''
+|-------
+|      |
+|      O
+|     /|\\
+|      |
+|     / \\
+|
+|
+===========
 '''
 ]
 
@@ -115,15 +129,16 @@ def update_stage(stage, wordlen, letters, positions, missed):
 
 def game():
     cls()
-    valid_word = False
-    while valid_word == False:
-        print('Enter word:')
-        word = unidecode.unidecode(input().upper())
-        if word.isalpha():
-            valid_word = True
-        if not word.isalpha():
-            print(Fore.RED+'Enter a valid word with no spaces')
-            print(Style.RESET_ALL)
+    # valid_word = False
+    # while valid_word == False:
+    #     print('Enter word:')
+    #     word = input().upper()
+    word = words[np.random.randint(0,len(words))].upper()
+    if word.isalpha():
+        valid_word = True
+    if not word.isalpha():
+        print(Fore.RED+'Enter a valid word with no spaces')
+        print(Style.RESET_ALL)
     wordlen = len(word)
 
     cls()
@@ -139,7 +154,7 @@ def game():
     while stage < 7:
         update_stage(stage, wordlen, letters, positions, missed)
         print('Letter: ')
-        guess = unidecode.unidecode(input().upper())
+        guess = input().upper()
      
         if guess.isalpha() and len(guess) == 1:
             pass
