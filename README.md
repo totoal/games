@@ -1,11 +1,12 @@
-FANE QEFLEMPAS
-
-|-------
-|      |
-|      O        <== Kappaco de mierda
-|     /|\
-|      |
-|     / \
-|
-|
-===========
+## FANE QEFLEMPAS
+<pre>
+ |-------
+ |      |
+ |      O        <== Kappaco de mierda
+ |     /|\
+ |      |
+ |     / \
+ |
+ |
+ ============
+ </pre>
