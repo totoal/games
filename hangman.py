@@ -120,7 +120,8 @@ def selection():
     i = 0
     while i != 1 and i != 2:
         print("How many players? (1-2):")
-        i = int(input())
+        try: i = int(input())
+        except: return
     return i
 
 def names():
@@ -265,8 +266,9 @@ if __name__ == '__main__':
     if players == 2:
         name1, name2 = names()
         rounds = 0
-        while rounds < 1 or rounds % 1 != 0:
-            rounds = int(input("Number of rounds: "))
+        while rounds < 1:
+            try: rounds = int(input("Number of rounds: "))
+            except: continue
         current = 1
         score1  = 0
         score2  = 0
