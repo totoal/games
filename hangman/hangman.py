@@ -163,6 +163,14 @@ def names():
     
     return player1name, player2name
 
+def display_score(name1, name2, score1, score2,
+        current, rounds):
+        cls()
+        print('========== SCORE ==========')
+        print(name1 + ' ' + str(score1)
+             + '-' + str(score2) + ' ' + name2)
+        print('===========================')
+
 def update_stage(stage, wordlen, letters, positions, missed, playername):
     cls()
     print(playername)
@@ -175,27 +183,6 @@ def update_stage(stage, wordlen, letters, positions, missed, playername):
     print(Fore.RED+'\r'+', '.join(missed))
     print(Style.RESET_ALL)
     print(' '.join(output))
-
-def display_score(which_update, name1, score1, name2, score2):
-    if which_update == '1':
-        which_update = name1
-        score = score1
-    elif which_update == '2':
-        which_update = name2
-        score = score2
-    if game(which_update):
-        if which_update is name1:
-            score = score1 + 1
-        if which_update is name2:
-            score = score2 + 1
-    cls()
-    print('========== SCORE ==========')
-    print(name1 + ' ' + str(score1)
-         + '-' + str(score2) + ' ' + name2)
-    print('===========================')
-    print('\n\nRound '+str(current)+' - '+name1+'\'s turn.')
-    input('\n(Press return)')
-    return score
 
 def game(playername):
     cls()
@@ -289,18 +276,32 @@ if __name__ == '__main__':
     if players == 2:
         name1, name2 = names()
         rounds = 0
+        score1  = 0
+        score2  = 0
         while rounds < 1:
             try: rounds = int(input('Number of rounds: '))
             except: continue
         current = 1
-        score1  = 0
-        score2  = 0
+        display_score(name1, name2, score1, score2, current, rounds)
+        print('\n\nRound '+str(current) + '/' + str(rounds) 
+            + ' - '+ name1 +'\'s turn.')
+        input('\n(Press return)')
         while current <= rounds:
-            score1 = display_score('1', name1, score1, name2, score2)
-            score2 = display_score('2', name1, score1, name2, score2)
+            if game(name1):
+                score1 += 1
+            display_score(name1, name2, score1, score2, current, rounds)
+            print('\n\nRound '+str(current) + '/' + str(rounds) 
+                + ' - '+ name2 +'\'s turn.')
+            input('\n(Press return)')
+            if game(name2):
+                score2 += 1
+            display_score(name1, name2, score1, score2, current, rounds)
+            if current != rounds:
+                print('\n\nRound '+str(current + 1) + '/' + str(rounds) 
+                    + ' - '+ name1 +'\'s turn.')
+                input('\n(Press return)')
             current+=1
         
-        print(name1 + ' '+str(score1)+'-'+str(score2)+' '+name2)
         if score1 > score2:
             print('\nThe winner is '+str(name1)+'!')
         elif score1 < score2:
