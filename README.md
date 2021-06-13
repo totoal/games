@@ -1,13 +1,14 @@
 ## FANE QEFLEMPAS
+
+To play a game, execute games.py and follow instructions therein.
 <pre>
  |-------
  |      |
  |      O
- |     /|\
+ |     /|\\
  |      |
- |     / \
+ |     / \\
  |
  |
  ============
  </pre>
- * To play hangman: Just go to the 'hangman' directory and execute 'hangman.py'
