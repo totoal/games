@@ -32,6 +32,7 @@ dic = {
 }
 
 while True:
+    cls()
     print(Fore.GREEN + 'WELCOME TO OHTANIA GAMES' + Style.RESET_ALL+'\nWhat do you want to play?')
     menu(dic)
     try: choice = int(input())
