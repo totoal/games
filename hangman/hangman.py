@@ -165,11 +165,11 @@ def names():
 
 def display_score(name1, name2, score1, score2,
         current, rounds):
+        scores = name1 + ' ' + str(score1) + '-' + str(score2) + ' ' + name2
         cls()
-        print('========== SCORE ==========')
-        print(name1 + ' ' + str(score1)
-             + '-' + str(score2) + ' ' + name2)
-        print('===========================')
+        print((' SCORE ').center(30, '='))
+        print(scores.center(48,' '))
+        print(('').center(30,'='))
 
 def update_stage(stage, wordlen, letters, positions, missed, playername):
     cls()
