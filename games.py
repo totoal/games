@@ -39,7 +39,7 @@ while True:
     except:
         print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
         exit()
-    if choice >= len(dic): 
+    if choice > len(dic): 
         print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
         exit()
     os.chdir(selector(choice,dic))
