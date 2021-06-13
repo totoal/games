@@ -57,8 +57,8 @@ def game():
         while not state[i] == 0 or i==-1:
             cls()  
             printboard(state)
-            if i ==-1: print(str(player)+"'s move ("+playchar+"):")
-            else: print("Invalid move")
+            print(str(player)+"'s move ("+playchar+"):")
+            if not i ==-1: print("Invalid move")
             try: r = int(input("Row:")) 
             except: 
                 continue
@@ -73,7 +73,7 @@ def game():
         check = checkwinner(state)
         if check != 0:
             printboard(state)
-            winstring = "\nPlayer "+str(check)+") wins!" 
+            winstring = "\nPlayer "+str(check)+" wins!" 
             if check == 1: print(Fore.YELLOW + winstring + Style.RESET_ALL)
             else: print(Fore.CYAN + winstring + Style.RESET_ALL)
             break

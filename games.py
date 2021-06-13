@@ -46,7 +46,7 @@ while True:
         break
     if choice == 0:  sys.exit()
     os.chdir(selector(choice,dic))
-    print(Fore.GREEN + selector(choice,dic) + Style.RESET_ALL)
+    print(Fore.GREEN + selector(choice,dic).title() + Style.RESET_ALL)
     time.sleep(1.5)
     exec(open(selector(choice,dic)+'.py').read())
     cls()
