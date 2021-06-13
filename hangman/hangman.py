@@ -274,37 +274,45 @@ if __name__ == '__main__':
             else:
                 continue
     if players == 2:
-        name1, name2 = names()
-        rounds = 0
-        score1  = 0
-        score2  = 0
-        while rounds < 1:
-            try: rounds = int(input('Number of rounds: '))
-            except: continue
-        current = 1
-        display_score(name1, name2, score1, score2, current, rounds)
-        print('\n\nRound '+str(current) + '/' + str(rounds) 
-            + ' - '+ name1 +'\'s turn.')
-        input('\n(Press return)')
-        while current <= rounds:
-            if game(name1):
-                score1 += 1
+        while True:
+            name1, name2 = names()
+            rounds = 0
+            score1  = 0
+            score2  = 0
+            while rounds < 1:
+                try: rounds = int(input('Number of rounds: '))
+                except: continue
+            current = 1
             display_score(name1, name2, score1, score2, current, rounds)
             print('\n\nRound '+str(current) + '/' + str(rounds) 
-                + ' - '+ name2 +'\'s turn.')
+                + ' - '+ name1 +'\'s turn.')
             input('\n(Press return)')
-            if game(name2):
-                score2 += 1
-            display_score(name1, name2, score1, score2, current, rounds)
-            if current != rounds:
-                print('\n\nRound '+str(current + 1) + '/' + str(rounds) 
-                    + ' - '+ name1 +'\'s turn.')
+            while current <= rounds:
+                if game(name1):
+                    score1 += 1
+                display_score(name1, name2, score1, score2, current, rounds)
+                print('\n\nRound '+str(current) + '/' + str(rounds) 
+                    + ' - '+ name2 +'\'s turn.')
                 input('\n(Press return)')
-            current+=1
-        
-        if score1 > score2:
-            print('\nThe winner is '+str(name1)+'!')
-        elif score1 < score2:
-            print('\nThe winner is '+str(name2)+'!')
-        else:
-            print('\nIt\'s a tie ¯\_(ツ)_/¯')
+                if game(name2):
+                    score2 += 1
+                display_score(name1, name2, score1, score2, current, rounds)
+                if current != rounds:
+                    print('\n\nRound '+str(current + 1) + '/' + str(rounds) 
+                        + ' - '+ name1 +'\'s turn.')
+                    input('\n(Press return)')
+                current+=1
+            
+            if score1 > score2:
+                print('\nThe winner is '+str(name1)+'!')
+            elif score1 < score2:
+                print('\nThe winner is '+str(name2)+'!')
+            else:
+                print('\nIt\'s a tie ¯\_(ツ)_/¯')
+            time.sleep(2)
+            print('Play again? y/n')
+            ng = input()
+            if not ng == 'y':
+                exit()
+            else:
+                continue

@@ -49,7 +49,7 @@ def checkwin(state):
                     if state[r][c] == state[r+1][c+1] and state[r][c] == state[r+2][c+2] and state[r][c] == state[r+3][c+3]: return state[r][c]
                 if c > 2:
                     if state[r][c] == state[r+1][c-1] and state[r][c] == state[r+2][c-2] and state[r][c] == state[r+3][c-3]: return state[r][c]
-            if c < 5:
+            if c < 4:
                 if state[r][c] == state[r][c+1] and state[r][c] == state[r][c+2] and state[r][c] == state[r][c+3]: return state[r][c]
     return 0        
     

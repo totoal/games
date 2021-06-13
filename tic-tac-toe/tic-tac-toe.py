@@ -71,7 +71,7 @@ def game():
         check = checkwinner(state)
         if check != 0:
             printboard(state)
-            winstring = "\nqPlayer "+str(check)+" ("+playchar+") wins!" 
+            winstring = "\nPlayer "+str(check)+") wins!" 
             if check == 1: print(Fore.YELLOW + winstring + Style.RESET_ALL)
             else: print(Fore.CYAN + winstring + Style.RESET_ALL)
             break
