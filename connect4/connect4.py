@@ -44,13 +44,33 @@ def checkwin(state):
         for c in range(0,7):
             if state[r][c] == 0: continue
             if r < 3:
-                if state[r][c] == state[r+1][c] and state[r][c] == state[r+2][c] and state[r][c] == state[r+3][c]: return state[r][c]
+                if (
+                        state[r][c] == state[r+1][c] and
+                        state[r][c] == state[r+2][c] and
+                        state[r][c] == state[r+3][c]
+                    ):
+                    return state[r][c]
                 if c < 4:
-                    if state[r][c] == state[r+1][c+1] and state[r][c] == state[r+2][c+2] and state[r][c] == state[r+3][c+3]: return state[r][c]
+                    if (
+                            state[r][c] == state[r+1][c+1] and
+                            state[r][c] == state[r+2][c+2] and
+                            state[r][c] == state[r+3][c+3]
+                        ):
+                        return state[r][c]
                 if c > 2:
-                    if state[r][c] == state[r+1][c-1] and state[r][c] == state[r+2][c-2] and state[r][c] == state[r+3][c-3]: return state[r][c]
+                    if (
+                            state[r][c] == state[r+1][c-1] and
+                            state[r][c] == state[r+2][c-2] and
+                            state[r][c] == state[r+3][c-3]
+                        ):
+                        return state[r][c]
             if c < 4:
-                if state[r][c] == state[r][c+1] and state[r][c] == state[r][c+2] and state[r][c] == state[r][c+3]: return state[r][c]
+                if (
+                        state[r][c] == state[r][c+1] and
+                        state[r][c] == state[r][c+2] and
+                        state[r][c] == state[r][c+3]
+                        ):
+                    return state[r][c]
     return 0        
     
 
@@ -59,7 +79,10 @@ def game():
     state = np.zeros((6,7))
     turn = 1
     while True:
-        playerstring = {1: Fore.RED + 'Player 1' + Style.RESET_ALL, 2:Fore.YELLOW + 'Player 2' + Style.RESET_ALL}
+        playerstring = {
+                1: Fore.RED + 'Player 1' + Style.RESET_ALL,
+                2:Fore.YELLOW + 'Player 2' + Style.RESET_ALL
+                }
         while True:
             printboard(state)
             print(playerstring[2-turn%2] + '\'s turn.')
@@ -93,6 +116,3 @@ if __name__ == '__main__':
             break
         else:
             continue
-
-
-    
