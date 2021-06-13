@@ -11,10 +11,10 @@ elif sys.platform == 'linux':
 else:
     def cls(): os.system('clear')
 
-def exception():
-    cls()
-    if input("Error - Press q to quit or any key to continue: ") != 'q': return True
-    else: exit()
+# def exception():
+    # cls()
+    # if input("Error - Press q to quit or any key to continue: ") != 'q': return True
+    # else: exit()
 
 def menu(dic):
     print("\n0 - Close Program")
