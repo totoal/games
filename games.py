@@ -17,7 +17,7 @@ def exception():
     else: exit()
 
 def menu(dic):
-    print("0 - Close Program")
+    print("\n0 - Close Program")
     for i in range(1,len(dic)+1):
         print(i,"-", dic[i].title())
 
@@ -46,15 +46,15 @@ while True:
         break
     if choice == 0:  sys.exit()
     os.chdir(selector(choice,dic))
-    print(Fore.GREEN + 'You chose '+ selector(choice,dic) + Style.RESET_ALL)
-    time.sleep(1)
+    print(Fore.GREEN + selector(choice,dic) + Style.RESET_ALL)
+    time.sleep(1.5)
     exec(open(selector(choice,dic)+'.py').read())
     cls()
     os.chdir('..')
-    ng = input('\nPlay something else? [Y/N]: ')
-    if ng.lower() == 'y':
-        continue
-    if ng.lower() == 'n':
-        exit()
-    else:
-        continue
+    # ng = input('\nPlay something else? [Y/N]: ')
+    # if ng.lower() == 'y':
+        # continue
+    # if ng.lower() == 'n':
+        # exit()
+    # else:
+        # continue
