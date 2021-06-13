@@ -25,9 +25,9 @@ def printboard(state):
             if state[3*r + i] == 0:
                 stringtoprint += ' '
             elif state[3*r + i] == 1:
-                stringtoprint += 'X'
+                stringtoprint += Fore.YELLOW + 'X' + Style.RESET_ALL
             elif state[3*r + i] == 2:
-                stringtoprint += 'O'
+                stringtoprint += Fore.CYAN + 'O' + Style.RESET_ALL
             stringtoprint += ' '
             if i != 2: stringtoprint += '| '
         print(stringtoprint)
@@ -49,12 +49,13 @@ def game():
     state = [0]*9
     turn  = 1 
     while 0 in state:
-        player = 2 if turn%2 == 0 else 1 
+        player = Fore.CYAN + 'Player 2' + Style.RESET_ALL if turn%2 == 0 else Fore.YELLOW + 'Player 1' + Style.RESET_ALL
+        playchar = Fore.CYAN + 'O' + Style.RESET_ALL if turn%2==0 else Fore.YELLOW + 'X' + Style.RESET_ALL 
         i = -1
         while not state[i] == 0 or i==-1:
             cls()  
             printboard(state)
-            if i ==-1: print("Player "+str(player)+"'s move")
+            if i ==-1: print(str(player)+"'s move ("+playchar+"):")
             else: print("Invalid move")
             try: r = int(input("Row:")) 
             except: 
@@ -66,15 +67,26 @@ def game():
                 print("Invalid move")
                 continue
             i = 3*(r-1)+(c-1)
-        state[i] = player
+        state[i] = 2-(turn%2)
         check = checkwinner(state)
         if check != 0:
-            print("Player "+str(check)+" wins!")              
             printboard(state)
+            winstring = "\nqPlayer "+str(check)+" ("+playchar+") wins!" 
+            if check == 1: print(Fore.YELLOW + winstring + Style.RESET_ALL)
+            else: print(Fore.CYAN + winstring + Style.RESET_ALL)
             break
         turn += 1
     if not 0 in state: 
-        print("It's a tie ¯\_(ツ)_/¯") 
         printboard(state)
+        print("\nIt's a tie ¯\_(ツ)_/¯") 
 
-game()
+if __name__ == '__main__':
+    game()
+    while True:
+        ng = input('\nPlay again? [Y/N]: ')
+        if ng.lower() == 'y':
+            game()
+        if ng.lower() == 'n':
+            break
+        else:
+            continue
