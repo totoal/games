@@ -35,13 +35,16 @@ while True:
     cls()
     print(Fore.GREEN + 'WELCOME TO OHTANIA GAMES' + Style.RESET_ALL+'\nWhat do you want to play?')
     menu(dic)
-    try: choice = int(input())
-    except:
-        print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
-        exit()
-    if choice > len(dic): 
-        print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
-        exit()
+    while True:
+        try: choice = int(input())
+        except:
+            print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
+            continue
+        if choice > len(dic) or choice < 0: 
+            print(Fore.RED + 'Bad selection' + Style.RESET_ALL)
+            continue
+        break
+    if choice == 0:  sys.exit()
     os.chdir(selector(choice,dic))
     print(Fore.GREEN + 'You chose '+ selector(choice,dic) + Style.RESET_ALL)
     time.sleep(1)
