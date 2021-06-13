@@ -11,10 +11,10 @@ elif sys.platform == 'linux':
 else:
     def cls(): os.system('clear')
 
-def exception():
-    cls()
-    if input("Error - Press q to quit or any key to continue: ") != 'q': return True
-    else: exit()
+# def exception():
+    # cls()
+    # if input("Error - Press q to quit or any key to continue: ") != 'q': return True
+    # else: exit()
 
 def printboard(state): 
     rows = []
@@ -49,8 +49,10 @@ def game():
     state = [0]*9
     turn  = 1 
     while 0 in state:
-        player = Fore.CYAN + 'Player 2' + Style.RESET_ALL if turn%2 == 0 else Fore.YELLOW + 'Player 1' + Style.RESET_ALL
-        playchar = Fore.CYAN + 'O' + Style.RESET_ALL if turn%2==0 else Fore.YELLOW + 'X' + Style.RESET_ALL 
+        player = (Fore.CYAN + 'Player 2' + Style.RESET_ALL if turn%2 == 0
+                else Fore.YELLOW + 'Player 1' + Style.RESET_ALL)
+        playchar = (Fore.CYAN + 'O' + Style.RESET_ALL if turn%2==0
+                else Fore.YELLOW + 'X' + Style.RESET_ALL) 
         i = -1
         while not state[i] == 0 or i==-1:
             cls()  
@@ -59,10 +61,10 @@ def game():
             else: print("Invalid move")
             try: r = int(input("Row:")) 
             except: 
-                if exception(): continue
+                continue
             try: c = int(input("Column:")) 
             except: 
-                if exception(): continue
+                continue
             if r < 1 or r > 3 or c < 1 or c > 3: 
                 print("Invalid move")
                 continue
