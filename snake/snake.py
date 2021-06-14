@@ -13,6 +13,13 @@ elif sys.platform == 'linux':
 else:
     def cls(): os.system('clear')
 
+controls = '''
+Controls:
+     ___
+ ___|_W_|___
+|_A_|_S_|_D_|
+'''
+
 def spawn_fruit(board):
     # -1 means fruit
     while True:
@@ -100,6 +107,9 @@ def disp_board(board):
     print(' ' + '= '*len(board))
 
 if __name__ == '__main__':
+    cls()
+    print(controls)
+    input('Press enter to continue')
     ng = 'init'
     while ng != 'n':
         ng = 'init'
@@ -114,3 +124,4 @@ if __name__ == '__main__':
             v = turn_snek(v)
         while ng != 'y' and ng != 'n':
             ng = input('Play again? y/n\n')
+    exit()
