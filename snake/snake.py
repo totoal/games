@@ -1,12 +1,7 @@
-############################
-''' UNDER CONSTRUCTION '''
-############################
-
 import numpy as np
 import os
 import sys
 import time
-import queue
 from colorama import Fore, Style
 from threading import Thread
 from getkey import getkey
@@ -105,12 +100,17 @@ def disp_board(board):
     print(' ' + '= '*len(board))
 
 if __name__ == '__main__':
-    board, v, slen = init()
-    board = spawn_fruit(board)
-    graphics = np.copy(board).astype(str)
+    ng = 'init'
+    while ng != 'n':
+        ng = 'init'
+        board, v, slen = init()
+        board = spawn_fruit(board)
+        graphics = np.copy(board).astype(str)
 
-    thr1 = Thread(target=go_snek, args=(board, slen))
-    thr1.start()
-    
-    while thr1.is_alive():
-        v = turn_snek(v)
+        thr1 = Thread(target=go_snek, args=(board, slen))
+        thr1.start()
+        
+        while thr1.is_alive():
+            v = turn_snek(v)
+        while ng != 'y' and ng != 'n':
+            ng = input('Play again? y/n\n')
