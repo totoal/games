@@ -17,7 +17,8 @@ controls = '''
 Controls:
      ___
  ___|_W_|___
-|_A_|_S_|_D_|
+| A | S | D |
+‾‾‾‾‾‾‾‾‾‾‾‾‾
 '''
 
 def spawn_fruit(board):
