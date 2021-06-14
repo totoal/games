@@ -11,10 +11,10 @@ elif sys.platform == 'linux':
 else:
     def cls(): os.system('clear')
 
-def exception():
-    cls()
-    if input("Error - Press q to quit or any key to continue: ") != 'q': return True
-    else: exit()
+# def exception():
+    # # cls()
+    # if input("Error - Press q to quit or any key to continue: ") != 'q': return True
+    # else: exit()
 
 def printboard(state): 
     cls()
@@ -88,7 +88,9 @@ def game():
             print(playerstring[2-turn%2] + '\'s turn.')
             try: c = int(input('Where do you want to place your disc?: '))
             except: 
-                exception()
+                print(Fore.RED + 'ERROR' + Style.RESET_ALL)
+                time.sleep(1)
+                continue
             if c > 7 or c<1: continue
             if fill(2-turn%2,state,c):
                 break
