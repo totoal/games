@@ -7,6 +7,7 @@ import os
 import sys
 import time
 import queue
+from colorama import Fore, Style
 from threading import Thread
 from getkey import getkey
 
@@ -30,7 +31,7 @@ def spawn_fruit(board):
     return board
 
 def init():
-    bdim = 5
+    bdim = 15
     board = np.zeros(bdim**2).reshape((bdim, bdim)).astype(int)
     #Init snake
     slen = 2
@@ -39,55 +40,70 @@ def init():
     vi = np.array([-1, 0])
     return board, vi, slen
 
-q = queue.Queue()
+def turn_snek(v):
+    turn = getkey()
+    if turn == 'w':
+        v_f = [0, -1]
+    if turn == 's':
+        v_f = [0, 1]
+    if turn == 'a':
+        v_f = [-1, 0]
+    if turn == 'd':
+        v_f = [1, 0]
+    v_f = np.array(v_f)
+
+    if v_f.dot(v) == 0: return v_f
+    else: return v
 
 def go_snek(board, slen):
     t_frame = 0.3
     while True:
         head_goto = np.array(np.where(board == 1)).flatten()  # Store where the head should go
-        head_goto = tuple(head_goto + v)
+        head_goto = head_goto + v
+        
+        if np.any(head_goto < 0) or np.any(head_goto >= len(board)):
+            break
+        head_goto = tuple(head_goto)
+        if board[head_goto] > 0:
+            break
+        
         board_tmp = np.copy(board)
         for n in range(1, slen+1):  # Move each part to the next position
             board_tmp[np.where(board == n)] += 1
         board = board_tmp
         if board[head_goto] == -1: yummy = True
         else: yummy = False
-
+        
         board[head_goto] = 1 # Place the head
-
+        
         if yummy:
             board = spawn_fruit(board)
+            slen += 1
         if not yummy:
             board[np.where(board == slen+1)] = 0 # Remove the tail
         disp_board(board)
-        q.put(board)
         time.sleep(t_frame)
+    print(Fore.RED + 'GAME OVER ' + Style.RESET_ALL)
+    return
 
 def disp_board(board):
     cls()
-    print(board.transpose())
+    graphics[board ==  0] = ' '
+    graphics[board >=  1] = '■'
+    graphics[board == -1] = '•'
 
-def turn_snek(v):
-    turn = getkey()
-    if turn == 'w':
-        v_f = [-1, 0]
-    if turn == 's':
-        v_f = [1, 0]
-    if turn == 'a':
-        v_f = [0, 1]
-    if turn == 'd':
-        v_f = [0, -1]
-    v_f = np.array(v_f)
-
-    if v_f.dot(v) == 0: return v_f
-    else: return v
+    print(' ' + '= '*len(board))
+    for line in graphics.transpose():
+        print('|' + ' '.join(line) + '|')
+    print(' ' + '= '*len(board))
 
 if __name__ == '__main__':
     board, v, slen = init()
     board = spawn_fruit(board)
-    
+    graphics = np.copy(board).astype(str)
+
     thr1 = Thread(target=go_snek, args=(board, slen))
     thr1.start()
-
-    while True:
+    
+    while thr1.is_alive():
         v = turn_snek(v)
