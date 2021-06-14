@@ -58,9 +58,14 @@ def turn_snek(v):
 
 def go_snek(board, slen):
     t_frame = 0.3
+    last_v = v
     while True:
+        this_v = v
+        if last_v.dot(this_v) == -1:
+            this_v = last_v
+        
         head_goto = np.array(np.where(board == 1)).flatten()  # Store where the head should go
-        head_goto = head_goto + v
+        head_goto = head_goto + this_v
         
         if np.any(head_goto < 0) or np.any(head_goto >= len(board)):
             break
@@ -83,7 +88,7 @@ def go_snek(board, slen):
         if not yummy:
             board[np.where(board == slen+1)] = 0 # Remove the tail
         disp_board(board)
-        last_v = v
+        last_v = this_v
         time.sleep(t_frame)
     print(Fore.RED + 'GAME OVER ' + Style.RESET_ALL)
     return
