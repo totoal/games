@@ -1,3 +1,4 @@
+from connect4.connect4 import exception
 import sys
 import os
 from colorama import Fore, Style
@@ -12,6 +13,11 @@ elif sys.platform == 'linux':
     def cls(): os.system('clear')
 else:
     def cls(): os.system('clear')
+
+def exception():
+    cls()
+    if input("Error - Press q to quit or any key to continue: ") != 'q': return True
+    else: exit()
 
 uengess = '''
                  |
@@ -121,7 +127,8 @@ def selection():
     while i != 1 and i != 2:
         print('How many players? (1-2):')
         try: i = int(input())
-        except: continue
+        except: 
+            exception()
     return i
 
 def names():
