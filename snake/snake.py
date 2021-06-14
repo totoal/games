@@ -50,9 +50,10 @@ def turn_snek(v):
         v_f = [-1, 0]
     if turn == 'd':
         v_f = [1, 0]
-    v_f = np.array(v_f)
-
-    if v_f.dot(v) == 0: return v_f
+    try: v_f = np.array(v_f)
+    except: return v
+    
+    if v.dot(v_f) == 0: return v_f
     else: return v
 
 def go_snek(board, slen):
@@ -82,6 +83,7 @@ def go_snek(board, slen):
         if not yummy:
             board[np.where(board == slen+1)] = 0 # Remove the tail
         disp_board(board)
+        last_v = v
         time.sleep(t_frame)
     print(Fore.RED + 'GAME OVER ' + Style.RESET_ALL)
     return
