@@ -28,7 +28,8 @@ def selector(i, dic):
 dic = {
     1: 'hangman',
     2: 'tic-tac-toe',
-    3: 'connect4'
+    3: 'connect4',
+    4: 'snake'
 }
 
 while True:
