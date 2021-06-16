@@ -269,18 +269,25 @@ def game(playername):
 if __name__ == '__main__':
     players = selection()
     if players == 1:
-        game(' ')
-        ng = '0'
+        ng = 'y'
+        won = 0
+        lost = 0
+        streak = 0
         while ng != 'n':
-            print('Play again? y/n')
-            ng = input()
-
-            if ng == 'y':
-                game(' ')
-            if ng == 'n':
-                break
+            if game(' '):
+                won += 1
+                streak += 1
             else:
-                continue
+                lost += 1
+                streak = 0
+            print(Fore.GREEN + 'Guessed: ' + str(won) + '\n'
+                + Fore.RED + 'Failed: ' + str(lost) + '\n'
+                + Style.RESET_ALL + 'Streak: ' + str(streak))
+            ng = '0'
+            while ng != 'y' and ng != 'n':
+                    ng = input('\nPlay again? y/n: ')
+            if ng == 'n':
+                exit()
     if players == 2:
         while True:
             name1, name2 = names()
@@ -318,9 +325,10 @@ if __name__ == '__main__':
             else:
                 print('\nIt\'s a tie ¯\_(ツ)_/¯')
             time.sleep(2)
-            print('Play again? y/n')
-            ng = input()
-            if not ng == 'y':
+            while ng != 'y' and ng != 'n':
+                print('Play again? y/n')
+                ng = input()
+            if ng == 'n':
                 exit()
-            else:
+            if ng == 'y' or ng == '':
                 continue
