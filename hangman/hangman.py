@@ -276,7 +276,7 @@ if __name__ == '__main__':
             ng = input()
 
             if ng == 'y':
-                game()
+                game(' ')
             if ng == 'n':
                 break
             else:
