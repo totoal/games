@@ -25,9 +25,8 @@ def input_seq(seq_len):
         sequence.append(getkey())
     return sequence
 
-def game(seq_len, dt, round):
+def game(dt, round, seq):
     buttons = ['w', 'a', 'd', 's']
-    seq = np.random.randint(0, 4, size=seq_len)
     disp_butt(buttons, round)
     time.sleep(dt)
     for event in seq:
@@ -46,7 +45,7 @@ def game(seq_len, dt, round):
         time.sleep(dt)
         
     print('Input: ')
-    in_seq = np.array(input_seq(seq_len))
+    in_seq = np.array(input_seq(len(seq)))
     in_seq[np.where(in_seq == 'w')] = 0
     in_seq[np.where(in_seq == 'a')] = 1
     in_seq[np.where(in_seq == 'd')] = 2
@@ -63,13 +62,10 @@ if __name__ == '__main__':
     while True:
         round = 1
         win = True
+        seq = []
         while win == True:
-            if round <= 3:
-                win = game(4, 0.4, round)
-            if round > 3 and round <= 6:
-                win = game(5, 0.3, round)
-            if round > 6:
-                win = game(6, 0.3, round)
+            seq.append(np.random.randint(0,4))
+            win = game(0.3, round, seq)
             if win:
                 print(Fore.GREEN + 'Nice!' + Style.RESET_ALL)
                 time.sleep(1.5)
