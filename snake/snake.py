@@ -107,8 +107,6 @@ def disp_board(board):
         print('|' + ' '.join(line) + '|')
     print(' ' + '= '*len(board))
 
-global v
-
 if __name__ == '__main__':
     cls()
     print(controls)
@@ -119,7 +117,7 @@ if __name__ == '__main__':
         board, v, slen = init()
         board = spawn_fruit(board)
         graphics = np.copy(board).astype(str)
-        
+
         thr1 = Thread(target=go_snek, args=(board, slen))
         thr1.start()
         
