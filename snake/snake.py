@@ -99,8 +99,8 @@ def go_snek(board, slen):
 def disp_board(board):
     cls()
     graphics[board ==  0] = ' '
-    graphics[board >=  1] = '■'
-    graphics[board == -1] = '•'
+    graphics[board >=  1] = Fore.GREEN + '■' + Style.RESET_ALL
+    graphics[board == -1] = Fore.RED + '•' + Style.RESET_ALL
 
     print(' ' + '= '*len(board))
     for line in graphics.transpose():
