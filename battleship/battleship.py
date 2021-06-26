@@ -54,7 +54,7 @@ def hit(vec,letter,number):
 
 def checkRemain(vec, key):
     if not key in vec: 
-        print(Fore.BLUE + Style.BRIGHT +  str(dic[key]) +' was sunk!' + Style.RESET_ALL)
+        print(Fore.RED + Style.BRIGHT +  str(dic[key]) +' was sunk!' + Style.RESET_ALL)
         return False
     return True
 
