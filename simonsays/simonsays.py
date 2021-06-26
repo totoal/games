@@ -76,4 +76,3 @@ if __name__ == '__main__':
         while ng != 'y' and ng != 'n':
             ng = input('Play again? y/n ')
         if ng == 'n': break
-    exit()
