@@ -30,8 +30,8 @@ dic = {
     2: 'tic-tac-toe',
     3: 'connect4',
     4: 'snake',
-    5: 'simonsays',
-    6: 'battleship'
+    5: 'simonsays'#,
+    # 6: 'battleship'
 }
 
 while True:
