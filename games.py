@@ -17,9 +17,10 @@ else:
     # else: exit()
 
 def menu(dic):
-    print("\n0 - Close Program")
+    print('\n')
     for i in range(1,len(dic)+1):
         print(i,"-", dic[i].title())
+    print("------------\n0 - Exit")
 
 def selector(i, dic):
     if i == 0: exit()
