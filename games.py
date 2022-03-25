@@ -55,10 +55,10 @@ while True:
     exec(open(selector(choice,dic)+'.py').read())
     cls()
     os.chdir('..')
-    # ng = input('\nPlay something else? [Y/N]: ')
-    # if ng.lower() == 'y':
-        # continue
-    # if ng.lower() == 'n':
-        # exit()
-    # else:
-        # continue
+    ng = input('\nPlay something else? [Y/N]: ')
+    if ng.lower() == 'y':
+       continue
+    if ng.lower() == 'n':
+        exit()
+    else:
+        continue
